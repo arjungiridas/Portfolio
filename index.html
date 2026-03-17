@@ -77,21 +77,21 @@ body {
     mix-blend-mode: multiply;
 }
 
-/* DARK MODE IMAGE (FIXED) */
+/* DARK MODE IMAGE (SUBTLE + PREMIUM) */
 .dark-img {
-    opacity: 0;  /* hidden initially */
-    filter: brightness(140%) contrast(160%) drop-shadow(0 0 60px red);
+    opacity: 0;
+    filter: brightness(110%) contrast(120%);
 }
 
-/* SWITCH */
+/* WHEN DARK MODE ACTIVE */
+.dark .dark-img {
+    opacity: 0.18;   /* 👈 PERFECT BALANCE */
+    transform: scale(1.02);
+}
+
+/* LIGHT IMAGE HIDE */
 .dark .light-img {
     opacity: 0;
-    transform: scale(1.05);
-}
-
-.dark .dark-img {
-    opacity: 0.35;   /* 👈 increased visibility */
-    transform: scale(1.02);
 }
 .hero-layer {
     position: absolute;
@@ -189,7 +189,7 @@ body {
 
     <h1>Arjun Giridas</h1>
     <p>DevOps Engineer | Automation | Cloud</p>
-    <a href="Arjun_Giridas_Resume.pdf" class="btn">Download Resume</a>
+    <a href="doc/Arjun Giridas Resume.pdf" class="btn">Download Resume</a>
 
 </section>
 
