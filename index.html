@@ -26,12 +26,10 @@ header {
 
 h1 {
     font-size: 42px;
-    margin-bottom: 10px;
 }
 
 .subtitle {
     color: #38bdf8;
-    font-size: 18px;
 }
 
 section {
@@ -53,10 +51,20 @@ section {
     background: #334155;
 }
 
+img {
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+img:hover {
+    transform: scale(1.02);
+}
+
 h2 {
     border-bottom: 2px solid #38bdf8;
     display: inline-block;
-    padding-bottom: 5px;
 }
 
 a {
@@ -69,15 +77,9 @@ a:hover {
     text-decoration: underline;
 }
 
-ul {
-    text-align: left;
-    display: inline-block;
-}
-
 .footer {
     text-align: center;
     padding: 20px;
-    font-size: 14px;
     color: #94a3b8;
 }
 </style>
@@ -89,84 +91,68 @@ ul {
     <h1>Arjun Giridas</h1>
     <p class="subtitle">System Administrator → DevOps Engineer</p>
     <p>Building automation, scalable systems & real-world deployments</p>
-    <p>Focused on automation, reliability, and scalable infrastructure.</p>
 </header>
 
 <section>
-    <h2>🚀 Projects</h2>
+<h2>🚀 Projects</h2>
 
-    <div class="card">
-        <h3>CI/CD Pipeline with Blue-Green Deployment</h3>
-        <p><strong>Tech:</strong> Docker, GitHub Actions, Nginx, AWS EC2</p>
-        <p>Implemented zero-downtime deployment with automated CI/CD pipeline.</p>
+<div class="card">
+<h3>CI/CD Pipeline with Blue-Green Deployment</h3>
+<p><strong>Tech:</strong> Docker, GitHub Actions, Nginx</p>
+<p>Automated deployment with zero downtime using Blue-Green strategy.</p>
+<img src="images/slack.png">
+<p><a href="https://github.com/arjungiridas/devops-microservice" target="_blank">🔗 View Code</a></p>
+</div>
 
-        <img src="slack.png" style="width:100%; border-radius:10px; margin-top:10px;">
+<div class="card">
+<h3>Dockerized Flask Application</h3>
+<p><strong>Tech:</strong> Flask, Docker, Gunicorn, Nginx</p>
+<p>Production-ready application deployed with CI/CD pipeline.</p>
+<img src="images/flask.png">
+</div>
 
-        <p>
-            <a href="https://github.com/arjungiridas/devops-microservice" target="_blank">🔗 View Code</a>
-        </p>
-    </div>
+<div class="card">
+<h3>Monitoring Dashboard</h3>
+<p><strong>Tech:</strong> Prometheus, Grafana</p>
+<p>Real-time system monitoring dashboard with performance metrics.</p>
+<img src="images/monitoring.png">
+</div>
 
-    <div class="card">
-        <h3>Dockerized Flask Application</h3>
-        <p><strong>Tech:</strong> Docker, Flask, Gunicorn, Nginx</p>
-        <p>Production-ready Flask app deployed with reverse proxy and CI/CD.</p>
-
-        <img src="flask.png" style="width:100%; border-radius:10px; margin-top:10px;">
-    </div>
-
-    <div class="card">
-        <h3>Monitoring Stack</h3>
-        <p><strong>Tech:</strong> Prometheus, Grafana</p>
-        <p>Real-time system monitoring dashboard with resource tracking.</p>
-
-        <img src="monitoring.png" style="width:100%; border-radius:10px; margin-top:10px;">
-    </div>
-
-    <div class="card">
-        <h3>Ping & Uptime Monitoring Tool</h3>
-        <p><strong>Tech:</strong> Python, Networking, Alerts</p>
-        <p>Custom monitoring tool with Telegram alert integration.</p>
-
-        <img src="alerts.png" style="width:100%; border-radius:10px; margin-top:10px;">
-
-        <p>
-            <a href="https://github.com/arjungiridas/ping-monitor" target="_blank">🔗 View Code</a>
-        </p>
-    </div>
+<div class="card">
+<h3>Ping & Uptime Monitoring Tool</h3>
+<p><strong>Tech:</strong> Python, Networking</p>
+<p>Custom monitoring tool with Telegram alert integration.</p>
+<img src="images/alerts.png">
+<p><a href="https://github.com/arjungiridas/ping-monitor" target="_blank">🔗 View Code</a></p>
+</div>
 
 </section>
 
 <section>
-    <h2>⚙️ DevOps Implementation</h2>
-    <ul>
-        <li>Version control using Git & GitHub</li>
-        <li>CI/CD automation using GitHub Actions</li>
-        <li>Containerization using Docker</li>
-        <li>Reverse proxy setup using Nginx</li>
-        <li>Monitoring with Prometheus & Grafana</li>
-    </ul>
+<h2>⚙️ DevOps Implementation</h2>
+<ul>
+<li>CI/CD using GitHub Actions</li>
+<li>Containerization with Docker</li>
+<li>Reverse proxy using Nginx</li>
+<li>Monitoring with Prometheus & Grafana</li>
+<li>Version control with Git</li>
+</ul>
 </section>
 
 <section>
-    <h2>🛠 Skills</h2>
-    <p>Linux | AWS | Docker | GitHub Actions | Ansible | Python | Flask | Nginx</p>
+<h2>🛠 Skills</h2>
+<p>Linux | Docker | GitHub Actions | Nginx | Python | AWS (Basic)</p>
 </section>
 
 <section>
-    <h2>🌐 Deployment</h2>
-    <p>This portfolio is hosted using GitHub Pages and updated automatically via GitHub.</p>
-</section>
-
-<section>
-    <h2>📬 Contact</h2>
-    <p>Email: arjungiridas123456@gmail.com</p>
-    <p><a href="https://linkedin.com/in/arjungiridas" target="_blank">LinkedIn Profile</a></p>
-    <p><a href="https://github.com/arjungiridas" target="_blank">GitHub Profile</a></p>
+<h2>📬 Contact</h2>
+<p>Email: arjungiridas123456@gmail.com</p>
+<p><a href="https://linkedin.com/in/arjungiridas" target="_blank">LinkedIn</a></p>
+<p><a href="https://github.com/arjungiridas" target="_blank">GitHub</a></p>
 </section>
 
 <div class="footer">
-    © 2026 Arjun Giridas | DevOps Portfolio
+© 2026 Arjun Giridas
 </div>
 
 </body>
