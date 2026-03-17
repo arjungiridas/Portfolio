@@ -15,156 +15,143 @@
 
 /* THEME */
 :root {
-    --bg: #ffffff;
-    --text: #111;
-    --sub: #666;
-    --card: #f8fafc;
-    --accent: linear-gradient(135deg,#2563eb,#7c3aed);
+    --bg:#ffffff;
+    --text:#111;
+    --sub:#666;
+    --card:#f3f4f6;
 }
 
 .dark {
-    --bg: #0b0f19;
-    --text: #f1f5f9;
-    --sub: #94a3b8;
-    --card: #111827;
+    --bg:#0b0f19;
+    --text:#f1f5f9;
+    --sub:#94a3b8;
+    --card:#111827;
 }
 
 /* GLOBAL */
 body {
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    transition: 0.4s;
-    overflow-x: hidden;
+    margin:0;
+    font-family:'Inter',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    transition:0.3s;
 }
 
 /* LOADER */
 #loader {
-    position: fixed;
-    inset: 0;
-    background: var(--bg);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
+    position:fixed;
+    inset:0;
+    background:var(--bg);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:9999;
 }
 
 .spinner {
-    width: 40px;
-    height: 40px;
-    border: 3px solid #ccc;
-    border-top: 3px solid #2563eb;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
+    width:40px;height:40px;
+    border:3px solid #ccc;
+    border-top:3px solid #2563eb;
+    border-radius:50%;
+    animation:spin 1s linear infinite;
 }
 
-@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes spin { to {transform:rotate(360deg);} }
 
-/* CURSOR GLOW */
-#cursor-glow {
-    position: fixed;
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, rgba(37,99,235,0.2), transparent);
-    border-radius: 50%;
-    pointer-events: none;
-    transform: translate(-50%, -50%);
+/* HERO */
+.hero {
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+.hero h1 {
+    font-size:56px;
+}
+
+.hero p {
+    color:var(--sub);
+}
+
+/* BUTTON */
+.btn {
+    margin-top:20px;
+    padding:10px 25px;
+    border-radius:30px;
+    background:var(--text);
+    color:var(--bg);
+    text-decoration:none;
 }
 
 /* DARK BUTTON */
 .theme-btn {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background: var(--accent);
-    padding: 15px;
-    border-radius: 50%;
-    color: white;
-    cursor: pointer;
-}
-
-/* HERO */
-.hero {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.hero h1 {
-    font-size: 64px;
-    background: var(--accent);
-    -webkit-background-clip: text;
-    color: transparent;
-}
-
-.hero p { color: var(--sub); }
-
-.btn {
-    margin-top: 20px;
-    padding: 12px 28px;
-    border-radius: 999px;
-    background: var(--text);
-    color: var(--bg);
-    text-decoration: none;
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:#2563eb;
+    color:white;
+    padding:12px;
+    border-radius:50%;
+    cursor:pointer;
 }
 
 /* CONTAINER */
 .container {
-    max-width: 1100px;
-    margin: auto;
-    padding: 80px 20px;
+    max-width:1100px;
+    margin:auto;
+    padding:60px 20px;
 }
 
 /* GRID */
 .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
-    gap: 30px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
 }
 
 /* CARD */
 .card {
-    border-radius: 16px;
-    background: var(--card);
-    overflow: hidden;
-    cursor: pointer;
-    transition: 0.4s;
+    background:var(--card);
+    border-radius:12px;
+    overflow:hidden;
+    cursor:pointer;
+    transition:0.3s;
 }
 
-.card:hover { transform: translateY(-10px); }
+.card:hover {
+    transform:translateY(-8px);
+}
 
 .card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
+    width:100%;
+    height:180px;
+    object-fit:cover;
 }
 
 /* MODAL */
 .modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.7);
-    justify-content: center;
-    align-items: center;
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.6);
+    justify-content:center;
+    align-items:center;
 }
 
 .modal-content {
-    background: var(--bg);
-    padding: 30px;
-    border-radius: 12px;
+    background:var(--bg);
+    padding:20px;
+    border-radius:10px;
 }
-
-.close { cursor: pointer; }
 
 /* FOOTER */
 .footer {
-    text-align: center;
-    padding: 50px;
-    color: var(--sub);
+    text-align:center;
+    padding:40px;
+    color:var(--sub);
 }
 
 </style>
@@ -172,36 +159,38 @@ body {
 
 <body>
 
+<!-- LOADER -->
 <div id="loader"><div class="spinner"></div></div>
-<div id="cursor-glow"></div>
+
+<!-- DARK MODE -->
 <div class="theme-btn" onclick="toggleMode()">🌙</div>
 
 <!-- HERO -->
-<section class="hero animate-hero">
+<section class="hero">
 <h1>Arjun Giridas</h1>
 <p>DevOps Engineer | Automation | Cloud</p>
 <a href="Arjun_Giridas_Resume.pdf" class="btn">Download Resume</a>
 </section>
 
 <!-- PROJECTS -->
-<div class="container animate-section">
+<div class="container">
 <h2>Projects</h2>
 
 <div class="grid">
 
-<div class="card tilt animate-card" onclick="openModal('CI/CD','Automation pipeline')">
+<div class="card" onclick="openModal('CI/CD Pipeline','Automated deployment using Docker & GitHub Actions')">
 <img src="images/slack.png">
 </div>
 
-<div class="card tilt animate-card" onclick="openModal('Flask','Docker deployment')">
+<div class="card" onclick="openModal('Flask Deployment','Dockerized Flask app')">
 <img src="images/flask.png">
 </div>
 
-<div class="card tilt animate-card" onclick="openModal('Monitoring','Grafana')">
+<div class="card" onclick="openModal('Monitoring','Prometheus & Grafana')">
 <img src="images/monitoring.png">
 </div>
 
-<div class="card tilt animate-card" onclick="openModal('Uptime','Python alerts')">
+<div class="card" onclick="openModal('Uptime Tool','Python alert monitoring')">
 <img src="images/alerts.png">
 </div>
 
@@ -209,7 +198,7 @@ body {
 </div>
 
 <!-- CONTACT -->
-<div class="container animate-section">
+<div class="container">
 <h2>Contact</h2>
 <p>Email: arjungiridas123456@gmail.com</p>
 </div>
@@ -217,8 +206,8 @@ body {
 <!-- MODAL -->
 <div id="modal" class="modal">
 <div class="modal-content">
-<span class="close" onclick="closeModal()">×</span>
-<h2 id="modal-title"></h2>
+<span onclick="closeModal()" style="cursor:pointer;">✖</span>
+<h3 id="modal-title"></h3>
 <p id="modal-desc"></p>
 </div>
 </div>
@@ -228,52 +217,39 @@ body {
 <script>
 
 // LOADER
-window.onload = () => document.getElementById("loader").style.display="none";
+window.onload = () => {
+    document.getElementById("loader").style.display="none";
+};
 
 // DARK MODE
-function toggleMode(){ document.body.classList.toggle("dark"); }
-
-// CURSOR
-document.addEventListener("mousemove", e=>{
-let g=document.getElementById("cursor-glow");
-g.style.left=e.clientX+"px"; g.style.top=e.clientY+"px";
-});
+function toggleMode(){
+    document.body.classList.toggle("dark");
+}
 
 // MODAL
 function openModal(t,d){
-document.getElementById("modal").style.display="flex";
-document.getElementById("modal-title").innerText=t;
-document.getElementById("modal-desc").innerText=d;
+    document.getElementById("modal").style.display="flex";
+    document.getElementById("modal-title").innerText=t;
+    document.getElementById("modal-desc").innerText=d;
 }
+
 function closeModal(){
-document.getElementById("modal").style.display="none";
+    document.getElementById("modal").style.display="none";
 }
 
-// 3D TILT
-document.querySelectorAll(".tilt").forEach(card=>{
-card.addEventListener("mousemove",e=>{
-let x=e.offsetX,y=e.offsetY;
-card.style.transform=`rotateX(${-(y-100)/10}deg) rotateY(${(x-150)/10}deg)`;
-});
-card.addEventListener("mouseleave",()=>card.style.transform="rotateX(0) rotateY(0)");
-});
+// GSAP SAFE (NO HIDING)
+gsap.from(".hero h1",{y:40,opacity:0,duration:1});
+gsap.from(".hero p",{y:20,opacity:0,delay:0.3});
 
-// GSAP
-gsap.registerPlugin(ScrollTrigger);
-
-gsap.from(".animate-hero h1",{y:80,opacity:0,duration:1});
-gsap.from(".animate-hero p",{y:40,opacity:0,delay:0.3});
-
-gsap.utils.toArray(".animate-section").forEach(sec=>{
-gsap.from(sec,{
-scrollTrigger:{trigger:sec,start:"top 80%"},
-y:80,opacity:0,duration:1
-});
-});
-
-gsap.from(".animate-card",{
-scrollTrigger:{trigger:".grid",start:"top 80%"},
-y:60,opacity:0,stagger:0.2
+gsap.from(".card",{
+    scrollTrigger:{
+        trigger:".grid",
+        start:"top 85%"
+    },
+    y:30,
+    opacity:0,
+    stagger:0.2,
+    duration:0.6
 });
 
 </script>
