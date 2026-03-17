@@ -151,6 +151,16 @@ body {
     opacity: 1;
     transform: translateY(0);
 }
+/* GLOBAL TRANSITION */
+body {
+    transition: background 0.6s ease, color 0.6s ease;
+}
+
+/* DARK MODE CINEMATIC BG */
+.dark {
+    --bg: #000;
+    background: radial-gradient(circle at center, rgba(255,0,0,0.08), #000);
+}
 /* BUTTON */
 .btn {
     margin-top: 25px;
@@ -223,16 +233,7 @@ body {
 </head>
 
 <body>
-/* GLOBAL TRANSITION */
-body {
-    transition: background 0.6s ease, color 0.6s ease;
-}
 
-/* DARK MODE CINEMATIC BG */
-.dark {
-    --bg: #000;
-    background: radial-gradient(circle at center, rgba(255,0,0,0.08), #000);
-}
 <div class="theme-toggle" onclick="toggleMode()">
     <div class="icon sun">☀️</div>
     <div class="icon moon">🌙</div>
