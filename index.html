@@ -5,87 +5,97 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Arjun Giridas | DevOps Engineer</title>
 
-<!-- ICON LIBRARY -->
+<!-- ICONS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
+
+/* GLOBAL */
 body {
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
     background: #0f172a;
     color: #e2e8f0;
     line-height: 1.6;
-    animation: fadeIn 1s ease-in;
-}
-
-/* ANIMATION */
-@keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
 }
 
 /* HEADER */
 header {
     text-align: center;
-    padding: 80px 20px 50px;
+    padding: 70px 20px 40px;
 }
 
 h1 {
-    font-size: 48px;
+    font-size: 42px;
     margin-bottom: 10px;
 }
 
 .subtitle {
     color: #38bdf8;
-    font-size: 20px;
+    font-size: 18px;
     margin-bottom: 10px;
+}
+
+/* BUTTON */
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 22px;
+    background: #38bdf8;
+    color: #0f172a;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #0ea5e9;
+    transform: scale(1.05);
 }
 
 /* SECTION */
 section {
     padding: 40px 20px;
-    max-width: 900px;
+    max-width: 1100px;
     margin: auto;
+}
+
+/* GRID */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+}
+
+/* CARD */
+.card {
+    background: linear-gradient(145deg, #1e293b, #0f172a);
+    padding: 18px;
+    border-radius: 12px;
+    transition: 0.3s;
+    box-shadow: 0 0 10px rgba(56,189,248,0.08);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 18px rgba(56,189,248,0.25);
+}
+
+/* IMAGE */
+img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-top: 10px;
 }
 
 /* HEADINGS */
 h2 {
     border-bottom: 2px solid #38bdf8;
     display: inline-block;
-    padding-bottom: 6px;
-    margin-bottom: 15px;
-}
-
-/* CARDS */
-.card {
-    background: linear-gradient(145deg, #1e293b, #0f172a);
-    padding: 20px;
-    margin: 20px 0;
-    border-radius: 15px;
-    transition: 0.3s;
-    box-shadow: 0 0 15px rgba(56,189,248,0.1);
-}
-
-.card h3 {
-    margin-top: 0;
-    margin-bottom: 10px;
-}
-
-.card p {
-    margin: 8px 0;
-}
-
-/* IMAGE */
-img {
-    width: 100%;
-    border-radius: 10px;
-    margin-top: 15px;
-    margin-bottom: 10px;
-    transition: 0.3s;
-}
-
-img:hover {
-    transform: scale(1.03);
+    margin-bottom: 20px;
 }
 
 /* LINKS */
@@ -101,121 +111,104 @@ a:hover {
 
 /* ICON */
 .icon {
-    margin-right: 10px;
-    color: #38bdf8;
+    margin-right: 8px;
 }
 
 /* LIST */
 ul {
-    line-height: 1.8;
-    padding-left: 20px;
+    padding-left: 18px;
 }
 
 /* FOOTER */
 .footer {
     text-align: center;
-    padding: 40px 20px;
-    margin-top: 40px;
+    padding: 30px;
     color: #94a3b8;
-    font-size: 14px;
-}
-.btn {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 12px 25px;
-    background: #38bdf8;
-    color: #0f172a;
-    border-radius: 8px;
-    font-weight: bold;
-    text-decoration: none;
-    transition: 0.3s;
 }
 
-.btn:hover {
-    background: #0ea5e9;
-    transform: scale(1.05);
-}
-section + section {
-    margin-top: -20px;
-}
 </style>
 </head>
 
 <body>
 
+<!-- HEADER -->
 <header>
     <h1><i class="fa-solid fa-server icon"></i>Arjun Giridas</h1>
     <p class="subtitle">System Administrator → DevOps Engineer</p>
     <p>Automating infrastructure, building scalable systems, and ensuring reliable deployments.</p>
 
-    <p style="margin-top:15px;">
-        <strong>🚀 Open to DevOps / Cloud Opportunities</strong>
+    <p style="margin-top:15px; color:#38bdf8; font-weight:bold;">
+        🚀 Open to DevOps / Cloud Opportunities
     </p>
+
     <a href="doc/Arjun Giridas Resume.pdf" download class="btn">
-    📄 Download Resume
-</a>
+        📄 Download Resume
+    </a>
 </header>
 
+<!-- ABOUT -->
 <section>
 <h2><i class="fa-solid fa-user icon"></i>About Me</h2>
 <p>
-System Administrator with real-world experience in managing enterprise infrastructure, servers, and networks.
-Currently transitioning into DevOps with hands-on expertise in CI/CD, Docker, monitoring, and automation.
+System Administrator with hands-on experience in Linux, networking, and IT infrastructure.
+Currently transitioning into DevOps with strong focus on CI/CD, Docker, automation, and monitoring.
 </p>
 </section>
 
+<!-- PROJECTS -->
 <section>
 <h2><i class="fa-solid fa-rocket icon"></i>Projects</h2>
 
+<div class="grid">
+
 <div class="card">
-<h3>CI/CD Pipeline with Blue-Green Deployment</h3>
-<p><strong>Tech:</strong> Docker, GitHub Actions, Nginx</p>
-<p>Automated zero-downtime deployments with Slack notifications and CI/CD pipelines.</p>
+<h3>CI/CD Pipeline</h3>
+<p><strong>Docker | GitHub Actions | Nginx</strong></p>
 <img src="images/slack.png">
 <p><a href="https://github.com/arjungiridas/devops-microservice" target="_blank">🔗 View Code</a></p>
 </div>
 
 <div class="card">
-<h3>Dockerized Flask Application</h3>
-<p><strong>Tech:</strong> Flask, Docker, Gunicorn, Nginx</p>
-<p>Containerized production-ready application deployed with reverse proxy.</p>
+<h3>Flask App Deployment</h3>
+<p><strong>Flask | Docker | Gunicorn</strong></p>
 <img src="images/flask.png">
 </div>
 
 <div class="card">
 <h3>Monitoring Dashboard</h3>
-<p><strong>Tech:</strong> Prometheus, Grafana</p>
-<p>Real-time monitoring with dashboards for system metrics and uptime.</p>
+<p><strong>Prometheus | Grafana</strong></p>
 <img src="images/monitoring.png">
 </div>
 
 <div class="card">
-<h3>Ping & Uptime Monitoring Tool</h3>
-<p><strong>Tech:</strong> Python, Networking</p>
-<p>Custom monitoring system with Telegram alerts for downtime detection.</p>
+<h3>Uptime Monitoring Tool</h3>
+<p><strong>Python | Alerts</strong></p>
 <img src="images/alerts.png">
 <p><a href="https://github.com/arjungiridas/ping-monitor" target="_blank">🔗 View Code</a></p>
 </div>
 
+</div>
 </section>
 
+<!-- DEVOPS -->
 <section>
 <h2><i class="fa-solid fa-gears icon"></i>DevOps Implementation</h2>
 <ul>
 <li>CI/CD pipelines using GitHub Actions</li>
-<li>Containerized deployments using Docker</li>
-<li>Reverse proxy setup with Nginx</li>
+<li>Containerization using Docker</li>
+<li>Reverse proxy using Nginx</li>
 <li>Monitoring using Prometheus & Grafana</li>
-<li>Version control with Git</li>
+<li>Version control using Git</li>
 </ul>
 </section>
 
+<!-- EXPERIENCE -->
 <section>
 <h2><i class="fa-solid fa-briefcase icon"></i>Experience</h2>
 
 <div class="card">
 <h3>System Administrator – Acumen Capital Market</h3>
-<p>Managing servers, security, backups, and enterprise IT infrastructure.</p>
+<p>Managing servers, security, backups, and enterprise infrastructure.</p>
 </div>
 
 <div class="card">
@@ -225,11 +218,13 @@ Currently transitioning into DevOps with hands-on expertise in CI/CD, Docker, mo
 
 </section>
 
+<!-- SKILLS -->
 <section>
 <h2><i class="fa-solid fa-tools icon"></i>Skills</h2>
 <p>Linux | Docker | GitHub Actions | Nginx | Python | AWS | Networking</p>
 </section>
 
+<!-- CONTACT -->
 <section>
 <h2><i class="fa-solid fa-envelope icon"></i>Contact</h2>
 <p>Email: arjungiridas123456@gmail.com</p>
@@ -237,6 +232,7 @@ Currently transitioning into DevOps with hands-on expertise in CI/CD, Docker, mo
 <p><a href="https://github.com/arjungiridas" target="_blank">GitHub</a></p>
 </section>
 
+<!-- FOOTER -->
 <div class="footer">
 © 2026 Arjun Giridas | DevOps Portfolio 🚀
 </div>
