@@ -78,10 +78,13 @@ body {
 
 /* DARK MODE IMAGE (RIGHT SIDE - initially hidden) */
 .dark-img {
-    right: -10%;   /* 👈 start slightly outside */
-    opacity: 0;
-}
+    opacity: 0.18;
+    right: 0;
 
+    /* 👇 THIS IS THE FIX */
+    mask-image: linear-gradient(to left, black 60%, transparent);
+    -webkit-mask-image: linear-gradient(to left, black 60%, transparent);
+}
 /* DARK MODE ACTIVE */
 .dark .light-img {
     opacity: 0;
