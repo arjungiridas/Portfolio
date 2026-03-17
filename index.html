@@ -43,8 +43,8 @@ body {
     inset:0;
     background:var(--bg);
     display:flex;
-    align-items:center;
     justify-content:center;
+    align-items:center;
     z-index:9999;
 }
 
@@ -58,6 +58,18 @@ body {
 
 @keyframes spin { to {transform:rotate(360deg);} }
 
+/* FIXED GLOW (BEHIND EVERYTHING) */
+#cursor-glow {
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(37,99,235,0.08), transparent);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: -1;   /* 🔥 FIX */
+}
+
 /* HERO */
 .hero {
     height:100vh;
@@ -70,6 +82,7 @@ body {
 
 .hero h1 {
     font-size:56px;
+    font-weight:700;
 }
 
 .hero p {
@@ -79,11 +92,16 @@ body {
 /* BUTTON */
 .btn {
     margin-top:20px;
-    padding:10px 25px;
+    padding:12px 28px;
     border-radius:30px;
     background:var(--text);
     color:var(--bg);
     text-decoration:none;
+    transition:0.3s;
+}
+
+.btn:hover {
+    transform:scale(1.05);
 }
 
 /* DARK BUTTON */
@@ -147,6 +165,8 @@ body {
     border-radius:10px;
 }
 
+.close { cursor:pointer; }
+
 /* FOOTER */
 .footer {
     text-align:center;
@@ -161,6 +181,9 @@ body {
 
 <!-- LOADER -->
 <div id="loader"><div class="spinner"></div></div>
+
+<!-- GLOW -->
+<div id="cursor-glow"></div>
 
 <!-- DARK MODE -->
 <div class="theme-btn" onclick="toggleMode()">🌙</div>
@@ -206,7 +229,7 @@ body {
 <!-- MODAL -->
 <div id="modal" class="modal">
 <div class="modal-content">
-<span onclick="closeModal()" style="cursor:pointer;">✖</span>
+<span onclick="closeModal()">✖</span>
 <h3 id="modal-title"></h3>
 <p id="modal-desc"></p>
 </div>
@@ -226,6 +249,13 @@ function toggleMode(){
     document.body.classList.toggle("dark");
 }
 
+// GLOW
+document.addEventListener("mousemove", e=>{
+    let g=document.getElementById("cursor-glow");
+    g.style.left=e.clientX+"px";
+    g.style.top=e.clientY+"px";
+});
+
 // MODAL
 function openModal(t,d){
     document.getElementById("modal").style.display="flex";
@@ -237,7 +267,9 @@ function closeModal(){
     document.getElementById("modal").style.display="none";
 }
 
-// GSAP SAFE (NO HIDING)
+// GSAP SAFE
+gsap.registerPlugin(ScrollTrigger);
+
 gsap.from(".hero h1",{y:40,opacity:0,duration:1});
 gsap.from(".hero p",{y:20,opacity:0,delay:0.3});
 
