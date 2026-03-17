@@ -11,12 +11,6 @@ body {
     font-family: 'Segoe UI', sans-serif;
     background: #0f172a;
     color: #e2e8f0;
-    animation: fadeIn 1s ease-in;
-}
-
-@keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
 }
 
 header {
@@ -24,13 +18,9 @@ header {
     padding: 80px 20px;
 }
 
-h1 {
-    font-size: 42px;
-}
+h1 { font-size: 42px; }
 
-.subtitle {
-    color: #38bdf8;
-}
+.subtitle { color: #38bdf8; }
 
 section {
     padding: 50px 20px;
@@ -55,11 +45,6 @@ img {
     width: 100%;
     border-radius: 10px;
     margin-top: 10px;
-    transition: 0.3s;
-}
-
-img:hover {
-    transform: scale(1.02);
 }
 
 h2 {
@@ -90,9 +75,19 @@ a:hover {
 <header>
     <h1>Arjun Giridas</h1>
     <p class="subtitle">System Administrator → DevOps Engineer</p>
-    <p>Building automation, scalable systems & real-world deployments</p>
+    <p>Experienced in Linux, networking, and infrastructure, now focused on automation & DevOps.</p>
 </header>
 
+<!-- ABOUT -->
+<section>
+<h2>👨‍💻 About Me</h2>
+<p>
+System Administrator with hands-on experience in managing IT infrastructure, servers, and networking.
+Currently transitioning into DevOps with strong focus on automation, CI/CD, containerization, and monitoring.
+</p>
+</section>
+
+<!-- PROJECTS -->
 <section>
 <h2>🚀 Projects</h2>
 
@@ -114,36 +109,43 @@ a:hover {
 <div class="card">
 <h3>Monitoring Dashboard</h3>
 <p><strong>Tech:</strong> Prometheus, Grafana</p>
-<p>Real-time system monitoring dashboard with performance metrics.</p>
+<p>Real-time system monitoring dashboard.</p>
 <img src="images/monitoring.png">
 </div>
 
 <div class="card">
 <h3>Ping & Uptime Monitoring Tool</h3>
 <p><strong>Tech:</strong> Python, Networking</p>
-<p>Custom monitoring tool with Telegram alert integration.</p>
+<p>Monitoring tool with Telegram alert integration.</p>
 <img src="images/alerts.png">
 <p><a href="https://github.com/arjungiridas/ping-monitor" target="_blank">🔗 View Code</a></p>
 </div>
 
 </section>
 
+<!-- EXPERIENCE -->
 <section>
-<h2>⚙️ DevOps Implementation</h2>
-<ul>
-<li>CI/CD using GitHub Actions</li>
-<li>Containerization with Docker</li>
-<li>Reverse proxy using Nginx</li>
-<li>Monitoring with Prometheus & Grafana</li>
-<li>Version control with Git</li>
-</ul>
+<h2>💼 Experience</h2>
+
+<div class="card">
+<h3>System Administrator – Acumen Capital Market</h3>
+<p>Managing IT infrastructure, servers, security, backups, and trading systems.</p>
+</div>
+
+<div class="card">
+<h3>System Administrator – UAE Exchange</h3>
+<p>Handled Linux/Windows servers, networking, and enterprise systems.</p>
+</div>
+
 </section>
 
+<!-- SKILLS -->
 <section>
 <h2>🛠 Skills</h2>
-<p>Linux | Docker | GitHub Actions | Nginx | Python | AWS (Basic)</p>
+<p>Linux | Docker | GitHub Actions | Nginx | Python | AWS | Networking</p>
 </section>
 
+<!-- CONTACT -->
 <section>
 <h2>📬 Contact</h2>
 <p>Email: arjungiridas123456@gmail.com</p>
@@ -152,7 +154,7 @@ a:hover {
 </section>
 
 <div class="footer">
-© 2026 Arjun Giridas
+© 2026 Arjun Giridas | DevOps Portfolio
 </div>
 
 </body>
