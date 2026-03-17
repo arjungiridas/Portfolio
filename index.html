@@ -11,170 +11,124 @@
 
 /* THEME */
 :root {
-    --bg:#ffffff;
-    --text:#111;
-    --sub:#666;
-    --card:#f5f5f5;
+    --bg: #ffffff;
+    --text: #111;
+    --sub: #666;
+    --card: #f8fafc;
+    --accent: linear-gradient(135deg,#2563eb,#7c3aed);
 }
 
 .dark {
-    --bg:#0b0f19;
-    --text:#f1f5f9;
-    --sub:#94a3b8;
-    --card:#111827;
+    --bg: #0b0f19;
+    --text: #f1f5f9;
+    --sub: #94a3b8;
+    --card: #111827;
 }
 
 /* GLOBAL */
-html {
-    scroll-behavior: smooth;
-}
-
 body {
-    margin:0;
-    font-family:'Inter',sans-serif;
-    background:var(--bg);
-    color:var(--text);
-    transition:0.3s;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    transition: 0.4s;
+    overflow-x: hidden;
 }
 
-/* NAVBAR */
-nav {
-    position:sticky;
-    top:0;
-    background:var(--bg);
-    padding:15px 20px;
-    border-bottom:1px solid #eee;
-    display:flex;
-    justify-content:space-between;
-    z-index:1000;
-}
-
-nav a {
-    text-decoration:none;
-    color:var(--text);
-    margin-right:15px;
-    font-size:14px;
-}
-
-/* DARK BUTTON */
-.theme-btn {
-    cursor:pointer;
-}
-
-/* HERO */
+/* HERO PARALLAX */
 .hero {
-    height:90vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at center, rgba(37,99,235,0.15), transparent);
+    position: relative;
+    overflow: hidden;
 }
 
 .hero h1 {
-    font-size:48px;
-    font-weight:700;
-    animation: fadeUp 1s ease forwards;
+    font-size: 64px;
+    background: var(--accent);
+    -webkit-background-clip: text;
+    color: transparent;
 }
 
-.hero p {
-    color:var(--sub);
-    animation: fadeUp 1s ease forwards;
-    animation-delay:0.2s;
-    opacity:0;
+.hero-layer {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: var(--accent);
+    filter: blur(120px);
+    opacity: 0.2;
 }
 
+/* BUTTON */
 .btn {
-    margin-top:20px;
-    padding:12px 25px;
-    border-radius:30px;
-    background:var(--text);
-    color:var(--bg);
-    text-decoration:none;
-    animation: fadeUp 1s ease forwards;
-    animation-delay:0.4s;
-    opacity:0;
-    transition:0.3s;
+    margin-top: 25px;
+    padding: 12px 28px;
+    border-radius: 999px;
+    background: var(--text);
+    color: var(--bg);
+    text-decoration: none;
 }
 
-.btn:hover {
-    transform:scale(1.05);
-}
-
-/* ANIMATION */
-@keyframes fadeUp {
-    from { opacity:0; transform:translateY(30px); }
-    to { opacity:1; transform:translateY(0); }
-}
-
-/* SECTION */
+/* CONTAINER */
 .container {
-    max-width:1000px;
-    margin:auto;
-    padding:60px 20px;
-}
-
-/* SCROLL REVEAL */
-.reveal {
-    opacity:0;
-    transform:translateY(40px);
-    transition:0.8s ease;
-}
-
-.reveal.active {
-    opacity:1;
-    transform:translateY(0);
+    max-width: 1100px;
+    margin: auto;
+    padding: 80px 20px;
 }
 
 /* GRID */
 .grid {
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:25px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
 }
 
 /* CARD */
 .card {
-    background:var(--card);
-    border-radius:12px;
-    overflow:hidden;
-    cursor:pointer;
-    transition:all 0.3s ease;
-}
-
-.card:hover {
-    transform:translateY(-10px) scale(1.02);
-    box-shadow:0 20px 40px rgba(0,0,0,0.1);
+    border-radius: 16px;
+    background: var(--card);
+    padding: 20px;
+    transition: transform 0.2s ease;
+    transform-style: preserve-3d;
 }
 
 .card img {
-    width:100%;
-    height:180px;
-    object-fit:cover;
+    width: 100%;
+    border-radius: 10px;
 }
 
-/* MODAL */
-.modal {
-    display:none;
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,0.6);
-    justify-content:center;
-    align-items:center;
+/* FEATURE SECTION */
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+    gap: 20px;
 }
 
-.modal-content {
-    background:var(--bg);
-    padding:20px;
-    border-radius:10px;
-    max-width:400px;
+.feature {
+    padding: 20px;
+}
+
+/* DARK BUTTON */
+.theme-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--accent);
+    color: white;
+    padding: 15px;
+    border-radius: 50%;
+    cursor: pointer;
 }
 
 /* FOOTER */
 .footer {
-    text-align:center;
-    padding:40px;
-    color:var(--sub);
+    text-align: center;
+    padding: 50px;
+    color: var(--sub);
 }
 
 </style>
@@ -182,62 +136,57 @@ nav a {
 
 <body>
 
-<!-- NAV -->
-<nav>
-    <div>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-    </div>
-    <div class="theme-btn" onclick="toggleMode()">🌙</div>
-</nav>
+<div class="theme-btn" onclick="toggleMode()">🌙</div>
 
 <!-- HERO -->
 <section class="hero">
+    <div class="hero-layer" id="layer1"></div>
+    <div class="hero-layer" id="layer2"></div>
+
     <h1>Arjun Giridas</h1>
     <p>DevOps Engineer | Automation | Cloud</p>
-    <a href="doc/Arjun Giridas Resume.pdf" class="btn">Download Resume</a>
+    <a href="Arjun_Giridas_Resume.pdf" class="btn">Download Resume</a>
 </section>
 
+<!-- FEATURES (PRODUCT STYLE) -->
+<div class="container">
+<h2>What I Do</h2>
+
+<div class="features">
+<div class="feature">⚙️ Automate CI/CD pipelines</div>
+<div class="feature">🐳 Containerized deployments</div>
+<div class="feature">📊 Monitoring & observability</div>
+<div class="feature">☁️ Cloud-ready infrastructure</div>
+</div>
+</div>
+
 <!-- PROJECTS -->
-<div class="container reveal" id="projects">
-    <h2>Projects</h2>
+<div class="container">
+<h2>Projects</h2>
 
-    <div class="grid">
+<div class="grid">
 
-        <div class="card" onclick="openModal('CI/CD Pipeline','Automated deployment using Docker & GitHub Actions')">
-            <img src="images/slack.png">
-        </div>
-
-        <div class="card" onclick="openModal('Flask Deployment','Dockerized Flask application')">
-            <img src="images/flask.png">
-        </div>
-
-        <div class="card" onclick="openModal('Monitoring','Prometheus & Grafana dashboard')">
-            <img src="images/monitoring.png">
-        </div>
-
-        <div class="card" onclick="openModal('Uptime Tool','Python-based alert monitoring system')">
-            <img src="images/alerts.png">
-        </div>
-
-    </div>
+<div class="card tilt">
+<img src="images/slack.png">
+<h3>CI/CD Pipeline</h3>
 </div>
 
-<!-- CONTACT -->
-<div class="container reveal" id="contact">
-    <h2>Contact</h2>
-    <p>Email: arjungiridas123456@gmail.com</p>
-    <p><a href="https://github.com/arjungiridas">GitHub</a></p>
-    <p><a href="https://linkedin.com/in/arjungiridas">LinkedIn</a></p>
+<div class="card tilt">
+<img src="images/flask.png">
+<h3>Flask Deployment</h3>
 </div>
 
-<!-- MODAL -->
-<div id="modal" class="modal">
-    <div class="modal-content">
-        <span onclick="closeModal()" style="cursor:pointer;">✖</span>
-        <h3 id="modal-title"></h3>
-        <p id="modal-desc"></p>
-    </div>
+<div class="card tilt">
+<img src="images/monitoring.png">
+<h3>Monitoring</h3>
+</div>
+
+<div class="card tilt">
+<img src="images/alerts.png">
+<h3>Uptime Tool</h3>
+</div>
+
+</div>
 </div>
 
 <div class="footer">© 2026 Arjun Giridas</div>
@@ -249,34 +198,30 @@ function toggleMode() {
     document.body.classList.toggle("dark");
 }
 
-// MODAL
-function openModal(title, desc) {
-    document.getElementById("modal").style.display = "flex";
-    document.getElementById("modal-title").innerText = title;
-    document.getElementById("modal-desc").innerText = desc;
-}
+// PARALLAX
+document.addEventListener("mousemove", e => {
+    document.getElementById("layer1").style.transform =
+        `translate(${e.clientX/20}px, ${e.clientY/20}px)`;
 
-function closeModal() {
-    document.getElementById("modal").style.display = "none";
-}
+    document.getElementById("layer2").style.transform =
+        `translate(${e.clientX/40}px, ${e.clientY/40}px)`;
+});
 
-// SCROLL REVEAL
-const reveals = document.querySelectorAll(".reveal");
+// 3D TILT
+document.querySelectorAll(".tilt").forEach(card => {
+    card.addEventListener("mousemove", e => {
+        let x = e.offsetX;
+        let y = e.offsetY;
+        let rotateX = -(y - 100) / 10;
+        let rotateY = (x - 150) / 10;
 
-function revealOnScroll() {
-    const windowHeight = window.innerHeight;
-
-    reveals.forEach(el => {
-        const top = el.getBoundingClientRect().top;
-
-        if (top < windowHeight - 100) {
-            el.classList.add("active");
-        }
+        card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
     });
-}
 
-window.addEventListener("scroll", revealOnScroll);
-revealOnScroll();
+    card.addEventListener("mouseleave", () => {
+        card.style.transform = "rotateX(0) rotateY(0)";
+    });
+});
 
 </script>
 
