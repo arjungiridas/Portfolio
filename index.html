@@ -9,13 +9,55 @@
 
 <style>
 
+/* ROOT COLORS */
+:root {
+    --bg: #ffffff;
+    --text: #111;
+    --subtext: #666;
+    --border: #ddd;
+}
+
+.dark {
+    --bg: #0f172a;
+    --text: #e2e8f0;
+    --subtext: #94a3b8;
+    --border: #334155;
+}
+
 /* GLOBAL */
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
     font-family: 'Inter', sans-serif;
-    background: #ffffff;
-    color: #111;
-    line-height: 1.6;
+    background: var(--bg);
+    color: var(--text);
+    transition: 0.3s;
+}
+
+/* NAVBAR */
+nav {
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    z-index: 1000;
+}
+
+nav a {
+    margin-right: 15px;
+    text-decoration: none;
+    color: var(--text);
+    font-size: 14px;
+}
+
+.toggle {
+    cursor: pointer;
 }
 
 /* CONTAINER */
@@ -25,20 +67,20 @@ body {
     padding: 40px 20px;
 }
 
-/* HEADER */
-header {
-    padding: 100px 20px 60px;
+/* HERO (APPLE STYLE) */
+.hero {
+    text-align: center;
+    padding: 120px 20px 80px;
+    animation: fadeUp 1s ease;
 }
 
-h1 {
-    font-size: 42px;
+.hero h1 {
+    font-size: 48px;
     font-weight: 600;
-    margin-bottom: 10px;
 }
 
-.subtitle {
-    font-size: 18px;
-    color: #666;
+.hero p {
+    color: var(--subtext);
 }
 
 .highlight {
@@ -51,26 +93,21 @@ h1 {
     display: inline-block;
     margin-top: 25px;
     padding: 10px 20px;
-    border: 1px solid #111;
+    border: 1px solid var(--text);
     border-radius: 6px;
     text-decoration: none;
-    color: #111;
+    color: var(--text);
     transition: 0.3s;
 }
 
 .btn:hover {
-    background: #111;
-    color: #fff;
+    background: var(--text);
+    color: var(--bg);
 }
 
 /* SECTION */
 section {
-    margin-top: 60px;
-}
-
-h2 {
-    font-size: 20px;
-    margin-bottom: 20px;
+    margin-top: 70px;
 }
 
 /* GRID */
@@ -82,13 +119,13 @@ h2 {
 
 /* PROJECT */
 .project {
-    border-top: 1px solid #ddd;
+    border-top: 1px solid var(--border);
     padding-top: 15px;
     transition: 0.3s;
 }
 
 .project:hover {
-    transform: translateY(-3px);
+    transform: translateY(-5px);
 }
 
 /* IMAGE */
@@ -96,24 +133,29 @@ img {
     width: 100%;
     border-radius: 6px;
     margin-top: 10px;
+    transition: 0.3s;
+}
+
+img:hover {
+    transform: scale(1.05);
 }
 
 /* LINKS */
 a {
-    color: #000;
-    text-decoration: none;
-    font-weight: 500;
+    color: var(--text);
 }
 
-a:hover {
-    text-decoration: underline;
+/* ANIMATION */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px);}
+    to { opacity: 1; transform: translateY(0);}
 }
 
 /* FOOTER */
 .footer {
     margin-top: 80px;
     font-size: 14px;
-    color: #888;
+    color: var(--subtext);
 }
 
 </style>
@@ -121,27 +163,31 @@ a:hover {
 
 <body>
 
+<!-- NAVBAR -->
+<nav>
+    <div>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+    </div>
+    <div class="toggle" onclick="toggleMode()">🌙</div>
+</nav>
+
 <div class="container">
 
-<header>
+<!-- HERO -->
+<div class="hero">
     <h1>Arjun Giridas</h1>
-    <p class="subtitle">System Administrator → DevOps Engineer</p>
-    <p>Building automation, scalable systems, and reliable deployments.</p>
+    <p>System Administrator → DevOps Engineer</p>
+    <p>Building scalable systems & automating infrastructure.</p>
 
     <p class="highlight">🚀 Open to DevOps / Cloud Opportunities</p>
 
     <a href="Arjun_Giridas_Resume.pdf" download class="btn">Download Resume</a>
-</header>
+</div>
 
-<section>
-<h2>About</h2>
-<p>
-System Administrator with hands-on experience in Linux, networking, and infrastructure.
-Currently transitioning into DevOps with focus on CI/CD, Docker, monitoring, and automation.
-</p>
-</section>
-
-<section>
+<!-- PROJECTS -->
+<section id="projects">
 <h2>Projects</h2>
 
 <div class="grid">
@@ -166,28 +212,24 @@ Currently transitioning into DevOps with focus on CI/CD, Docker, monitoring, and
 </div>
 
 <div class="project">
-<h3>Uptime Monitoring Tool</h3>
+<h3>Uptime Monitoring</h3>
 <p>Python · Alerts</p>
 <img src="images/alerts.png">
 <p><a href="https://github.com/arjungiridas/ping-monitor">View Code</a></p>
 </div>
 
 </div>
-
 </section>
 
-<section>
+<!-- EXPERIENCE -->
+<section id="experience">
 <h2>Experience</h2>
 <p><strong>System Administrator</strong> — Acumen Capital Market</p>
 <p><strong>System Administrator</strong> — UAE Exchange</p>
 </section>
 
-<section>
-<h2>Skills</h2>
-<p>Linux · Docker · GitHub Actions · Nginx · Python · AWS · Networking</p>
-</section>
-
-<section>
+<!-- CONTACT -->
+<section id="contact">
 <h2>Contact</h2>
 <p>Email: arjungiridas123456@gmail.com</p>
 <p><a href="https://linkedin.com/in/arjungiridas">LinkedIn</a></p>
@@ -199,6 +241,12 @@ Currently transitioning into DevOps with focus on CI/CD, Docker, monitoring, and
 </div>
 
 </div>
+
+<script>
+function toggleMode() {
+    document.body.classList.toggle("dark");
+}
+</script>
 
 </body>
 </html>
