@@ -105,7 +105,52 @@ body {
 .bg-image {
     transition: all 0.8s cubic-bezier(.77,0,.18,1);
 }
+/* THEME TOGGLE BUTTON */
+.theme-toggle {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg,#2563eb,#7c3aed);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    overflow: hidden;
+    z-index: 999;
+}
 
+/* ICONS */
+.icon {
+    position: absolute;
+    font-size: 22px;
+    transition: all 0.5s ease;
+}
+
+/* SUN DEFAULT */
+.sun {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* MOON HIDDEN */
+.moon {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+/* DARK MODE SWITCH */
+.dark .sun {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+.dark .moon {
+    opacity: 1;
+    transform: translateY(0);
+}
 /* BUTTON */
 .btn {
     margin-top: 25px;
@@ -178,9 +223,21 @@ body {
 </head>
 
 <body>
+/* GLOBAL TRANSITION */
+body {
+    transition: background 0.6s ease, color 0.6s ease;
+}
 
-<div class="theme-btn" onclick="toggleMode()">🌙</div>
-
+/* DARK MODE CINEMATIC BG */
+.dark {
+    --bg: #000;
+    background: radial-gradient(circle at center, rgba(255,0,0,0.08), #000);
+}
+<div class="theme-toggle" onclick="toggleMode()">
+    <div class="icon sun">☀️</div>
+    <div class="icon moon">🌙</div>
+</div>
+<div class="theme-glow"></div>
 <!-- HERO -->
 <section class="hero">
 
