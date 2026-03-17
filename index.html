@@ -53,7 +53,40 @@ body {
     -webkit-background-clip: text;
     color: transparent;
 }
+/* BASE IMAGE */
+.bg-image {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 90%;
+    pointer-events: none;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    z-index: 0;
+}
 
+/* LIGHT MODE (SKETCH) */
+.light-img {
+    opacity: 0.08;
+    filter: grayscale(100%) contrast(140%);
+    mix-blend-mode: multiply;
+}
+
+/* DARK MODE (NEON) */
+.dark-img {
+    opacity: 0;
+    filter: brightness(130%) contrast(150%) drop-shadow(0 0 40px red);
+}
+
+/* SWITCH EFFECT */
+.dark .light-img {
+    opacity: 0;
+    transform: scale(1.05);
+}
+
+.dark .dark-img {
+    opacity: 0.25;
+    transform: scale(1.02);
+}
 .hero-layer {
     position: absolute;
     width: 300px;
@@ -140,12 +173,18 @@ body {
 
 <!-- HERO -->
 <section class="hero">
+
+    <!-- BACKGROUND IMAGES -->
+    <img src="images/profile-light.png" class="bg-image light-img">
+    <img src="images/profile-dark.png" class="bg-image dark-img">
+
     <div class="hero-layer" id="layer1"></div>
     <div class="hero-layer" id="layer2"></div>
 
     <h1>Arjun Giridas</h1>
     <p>DevOps Engineer | Automation | Cloud</p>
     <a href="Arjun_Giridas_Resume.pdf" class="btn">Download Resume</a>
+
 </section>
 
 <!-- FEATURES (PRODUCT STYLE) -->
