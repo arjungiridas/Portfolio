@@ -5,29 +5,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Arjun Giridas | DevOps Engineer</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 
-/* ROOT COLORS */
+/* ROOT */
 :root {
     --bg: #ffffff;
     --text: #111;
-    --subtext: #666;
-    --border: #ddd;
+    --sub: #666;
+    --accent: #2563eb;
 }
 
 .dark {
-    --bg: #0f172a;
-    --text: #e2e8f0;
-    --subtext: #94a3b8;
-    --border: #334155;
+    --bg: #0b0f19;
+    --text: #f1f5f9;
+    --sub: #94a3b8;
+    --accent: #60a5fa;
 }
 
 /* GLOBAL */
-html {
-    scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
     margin: 0;
@@ -37,125 +35,140 @@ body {
     transition: 0.3s;
 }
 
-/* NAVBAR */
+/* NAV */
 nav {
-    position: sticky;
+    position: fixed;
+    width: 100%;
     top: 0;
-    background: var(--bg);
-    padding: 15px 20px;
-    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(10px);
+    background: rgba(255,255,255,0.6);
+    padding: 15px 30px;
     display: flex;
     justify-content: space-between;
-    z-index: 1000;
+    border-bottom: 1px solid #eee;
+}
+
+.dark nav {
+    background: rgba(10,15,25,0.6);
+    border-color: #222;
 }
 
 nav a {
-    margin-right: 15px;
+    margin-right: 20px;
+    font-size: 14px;
     text-decoration: none;
     color: var(--text);
-    font-size: 14px;
 }
 
-.toggle {
-    cursor: pointer;
-}
+.toggle { cursor: pointer; }
 
-/* CONTAINER */
-.container {
-    max-width: 1000px;
-    margin: auto;
-    padding: 40px 20px;
-}
-
-/* HERO (APPLE STYLE) */
+/* HERO */
 .hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     text-align: center;
-    padding: 120px 20px 80px;
-    animation: fadeUp 1s ease;
+    padding: 20px;
 }
 
 .hero h1 {
-    font-size: 48px;
-    font-weight: 600;
+    font-size: 64px;
+    font-weight: 700;
+    letter-spacing: -2px;
 }
 
 .hero p {
-    color: var(--subtext);
+    color: var(--sub);
+    font-size: 18px;
+    margin-top: 10px;
 }
 
-.highlight {
-    margin-top: 15px;
-    font-weight: 600;
+.gradient {
+    background: linear-gradient(90deg, #2563eb, #7c3aed);
+    -webkit-background-clip: text;
+    color: transparent;
 }
 
 /* BUTTON */
 .btn {
-    display: inline-block;
     margin-top: 25px;
-    padding: 10px 20px;
-    border: 1px solid var(--text);
-    border-radius: 6px;
+    padding: 12px 28px;
+    border-radius: 999px;
+    background: var(--text);
+    color: var(--bg);
     text-decoration: none;
-    color: var(--text);
     transition: 0.3s;
 }
 
 .btn:hover {
-    background: var(--text);
-    color: var(--bg);
+    transform: scale(1.05);
 }
 
 /* SECTION */
-section {
-    margin-top: 70px;
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 80px 20px;
 }
 
 /* GRID */
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
+    gap: 30px;
 }
 
-/* PROJECT */
+/* PROJECT CARD */
 .project {
-    border-top: 1px solid var(--border);
-    padding-top: 15px;
-    transition: 0.3s;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: 0.4s;
 }
 
 .project:hover {
-    transform: translateY(-5px);
+    transform: translateY(-10px);
 }
 
-/* IMAGE */
-img {
+.project img {
     width: 100%;
-    border-radius: 6px;
-    margin-top: 10px;
-    transition: 0.3s;
+    height: 200px;
+    object-fit: cover;
+    transition: 0.4s;
 }
 
-img:hover {
-    transform: scale(1.05);
+.project:hover img {
+    transform: scale(1.1);
 }
 
-/* LINKS */
-a {
-    color: var(--text);
+.project-content {
+    padding: 15px;
 }
 
-/* ANIMATION */
-@keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px);}
-    to { opacity: 1; transform: translateY(0);}
+/* SECTION TITLE */
+h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
 }
 
 /* FOOTER */
 .footer {
-    margin-top: 80px;
-    font-size: 14px;
-    color: var(--subtext);
+    text-align: center;
+    padding: 50px;
+    color: var(--sub);
+}
+
+/* FADE ANIMATION */
+.fade {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 0.6s;
+}
+
+.fade.show {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 </style>
@@ -163,89 +176,91 @@ a {
 
 <body>
 
-<!-- NAVBAR -->
+<!-- NAV -->
 <nav>
     <div>
         <a href="#projects">Projects</a>
-        <a href="#experience">Experience</a>
         <a href="#contact">Contact</a>
     </div>
     <div class="toggle" onclick="toggleMode()">🌙</div>
 </nav>
 
-<div class="container">
-
 <!-- HERO -->
-<div class="hero">
-    <h1>Arjun Giridas</h1>
+<section class="hero">
+    <h1><span class="gradient">Arjun Giridas</span></h1>
     <p>System Administrator → DevOps Engineer</p>
     <p>Building scalable systems & automating infrastructure.</p>
 
-    <p class="highlight">🚀 Open to DevOps / Cloud Opportunities</p>
-
     <a href="Arjun_Giridas_Resume.pdf" download class="btn">Download Resume</a>
-</div>
+</section>
 
 <!-- PROJECTS -->
-<section id="projects">
-<h2>Projects</h2>
+<div class="container fade" id="projects">
+    <h2>Projects</h2>
 
-<div class="grid">
+    <div class="grid">
 
-<div class="project">
-<h3>CI/CD Pipeline</h3>
-<p>Docker · GitHub Actions · Nginx</p>
-<img src="images/slack.png">
-<p><a href="https://github.com/arjungiridas/devops-microservice">View Code</a></p>
+        <div class="project">
+            <img src="images/slack.png">
+            <div class="project-content">
+                <h3>CI/CD Pipeline</h3>
+                <p>Docker · GitHub Actions</p>
+            </div>
+        </div>
+
+        <div class="project">
+            <img src="images/flask.png">
+            <div class="project-content">
+                <h3>Flask Deployment</h3>
+                <p>Docker · Gunicorn</p>
+            </div>
+        </div>
+
+        <div class="project">
+            <img src="images/monitoring.png">
+            <div class="project-content">
+                <h3>Monitoring</h3>
+                <p>Prometheus · Grafana</p>
+            </div>
+        </div>
+
+        <div class="project">
+            <img src="images/alerts.png">
+            <div class="project-content">
+                <h3>Uptime Monitoring</h3>
+                <p>Python · Alerts</p>
+            </div>
+        </div>
+
+    </div>
 </div>
-
-<div class="project">
-<h3>Flask Deployment</h3>
-<p>Flask · Docker · Gunicorn</p>
-<img src="images/flask.png">
-</div>
-
-<div class="project">
-<h3>Monitoring Dashboard</h3>
-<p>Prometheus · Grafana</p>
-<img src="images/monitoring.png">
-</div>
-
-<div class="project">
-<h3>Uptime Monitoring</h3>
-<p>Python · Alerts</p>
-<img src="images/alerts.png">
-<p><a href="https://github.com/arjungiridas/ping-monitor">View Code</a></p>
-</div>
-
-</div>
-</section>
-
-<!-- EXPERIENCE -->
-<section id="experience">
-<h2>Experience</h2>
-<p><strong>System Administrator</strong> — Acumen Capital Market</p>
-<p><strong>System Administrator</strong> — UAE Exchange</p>
-</section>
 
 <!-- CONTACT -->
-<section id="contact">
-<h2>Contact</h2>
-<p>Email: arjungiridas123456@gmail.com</p>
-<p><a href="https://linkedin.com/in/arjungiridas">LinkedIn</a></p>
-<p><a href="https://github.com/arjungiridas">GitHub</a></p>
-</section>
+<div class="container fade" id="contact">
+    <h2>Contact</h2>
+    <p>Email: arjungiridas123456@gmail.com</p>
+    <p><a href="https://github.com/arjungiridas">GitHub</a></p>
+    <p><a href="https://linkedin.com/in/arjungiridas">LinkedIn</a></p>
+</div>
 
 <div class="footer">
 © 2026 Arjun Giridas
-</div>
-
 </div>
 
 <script>
 function toggleMode() {
     document.body.classList.toggle("dark");
 }
+
+// Scroll animation
+const faders = document.querySelectorAll(".fade");
+window.addEventListener("scroll", () => {
+    faders.forEach(el => {
+        if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+            el.classList.add("show");
+        }
+    });
+});
 </script>
 
 </body>
