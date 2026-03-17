@@ -184,6 +184,69 @@ body {
     color: var(--bg);
     text-decoration: none;
 }
+.carousel-wrapper {
+    position: relative;
+}
+
+.carousel {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    padding: 10px;
+}
+
+/* hide scrollbar */
+.carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.project-card {
+    min-width: 280px;
+    flex: 0 0 auto;
+    background: var(--card);
+    border-radius: 14px;
+    padding: 15px;
+    scroll-snap-align: center;
+    transition: 0.3s;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+}
+
+.project-card img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.project-card h3 {
+    margin: 10px 0 5px;
+}
+
+.project-card p {
+    font-size: 14px;
+    color: var(--sub);
+}
+
+/* NAV BUTTONS */
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--text);
+    color: var(--bg);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.left { left: -10px; }
+.right { right: -10px; }
 
 /* CONTAINER */
 .container {
@@ -322,29 +385,42 @@ My goal is to become a DevOps Engineer who can design scalable systems, automate
 </div>
 
 <!-- PROJECTS -->
-<div class="card tilt">
-<img src="images/slack.png">
-<h3>CI/CD Pipeline with Blue-Green Deployment</h3>
-<p>Implemented automated deployments using GitHub Actions, Docker, and NGINX with zero downtime strategy.</p>
-</div>
+<div class="container">
+<h2>Projects</h2>
 
-<div class="card tilt">
-<img src="images/flask.png">
-<h3>Dockerized Flask Application</h3>
-<p>Developed and deployed a production-ready Flask app using Gunicorn and Nginx with containerization.</p>
-</div>
+<div class="carousel-wrapper">
 
-<div class="card tilt">
-<img src="images/monitoring.png">
-<h3>Monitoring Stack</h3>
-<p>Built a real-time monitoring system using Prometheus and Grafana dashboards.</p>
-</div>
+    <button class="nav-btn left" onclick="scrollProjects(-1)">‹</button>
 
-<div class="card tilt">
-<img src="images/alerts.png">
-<h3>Ping & Uptime Monitoring Tool</h3>
-<p>Created a Python-based tool with alert notifications for system availability tracking.</p>
-</div>
+    <div class="carousel" id="projectCarousel">
+
+        <div class="project-card">
+            <img src="images/slack.png">
+            <h3>CI/CD Pipeline</h3>
+            <p>Automated deployments using GitHub Actions, Docker, and NGINX.</p>
+        </div>
+
+        <div class="project-card">
+            <img src="images/flask.png">
+            <h3>Flask Deployment</h3>
+            <p>Dockerized Flask app using Gunicorn and Nginx.</p>
+        </div>
+
+        <div class="project-card">
+            <img src="images/monitoring.png">
+            <h3>Monitoring Stack</h3>
+            <p>Prometheus & Grafana dashboards for real-time monitoring.</p>
+        </div>
+
+        <div class="project-card">
+            <img src="images/alerts.png">
+            <h3>Uptime Tool</h3>
+            <p>Python-based monitoring tool with alert alerts.</p>
+        </div>
+
+    </div>
+
+    <button class="nav-btn right" onclick="scrollProjects(1)">›</button>
 
 </div>
 </div>
