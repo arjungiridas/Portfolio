@@ -23,6 +23,9 @@
     --text: #f1f5f9;
     --sub: #94a3b8;
     --card: #111827;
+    .dark {
+    background: radial-gradient(circle at center, rgba(255,0,0,0.06), #000);
+}
 }
 
 /* GLOBAL */
@@ -84,6 +87,7 @@ body {
     /* 👇 THIS IS THE FIX */
     mask-image: linear-gradient(to left, black 60%, transparent);
     -webkit-mask-image: linear-gradient(to left, black 60%, transparent);
+    filter: blur(0.5px) brightness(110%) contrast(120%);
 }
 /* DARK MODE ACTIVE */
 .dark .light-img {
