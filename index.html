@@ -69,19 +69,21 @@ nav a {
     justify-content:center;
     align-items:center;
     text-align:center;
-    padding:20px;
 }
 
 .hero h1 {
     font-size:48px;
     font-weight:700;
+    animation: fadeUp 1s ease forwards;
 }
 
 .hero p {
     color:var(--sub);
+    animation: fadeUp 1s ease forwards;
+    animation-delay:0.2s;
+    opacity:0;
 }
 
-/* BUTTON */
 .btn {
     margin-top:20px;
     padding:12px 25px;
@@ -89,6 +91,9 @@ nav a {
     background:var(--text);
     color:var(--bg);
     text-decoration:none;
+    animation: fadeUp 1s ease forwards;
+    animation-delay:0.4s;
+    opacity:0;
     transition:0.3s;
 }
 
@@ -96,11 +101,29 @@ nav a {
     transform:scale(1.05);
 }
 
+/* ANIMATION */
+@keyframes fadeUp {
+    from { opacity:0; transform:translateY(30px); }
+    to { opacity:1; transform:translateY(0); }
+}
+
 /* SECTION */
 .container {
     max-width:1000px;
     margin:auto;
     padding:60px 20px;
+}
+
+/* SCROLL REVEAL */
+.reveal {
+    opacity:0;
+    transform:translateY(40px);
+    transition:0.8s ease;
+}
+
+.reveal.active {
+    opacity:1;
+    transform:translateY(0);
 }
 
 /* GRID */
@@ -115,12 +138,13 @@ nav a {
     background:var(--card);
     border-radius:12px;
     overflow:hidden;
-    transition:0.3s;
     cursor:pointer;
+    transition:all 0.3s ease;
 }
 
 .card:hover {
-    transform:translateY(-8px);
+    transform:translateY(-10px) scale(1.02);
+    box-shadow:0 20px 40px rgba(0,0,0,0.1);
 }
 
 .card img {
@@ -175,7 +199,7 @@ nav a {
 </section>
 
 <!-- PROJECTS -->
-<div class="container" id="projects">
+<div class="container reveal" id="projects">
     <h2>Projects</h2>
 
     <div class="grid">
@@ -200,7 +224,7 @@ nav a {
 </div>
 
 <!-- CONTACT -->
-<div class="container" id="contact">
+<div class="container reveal" id="contact">
     <h2>Contact</h2>
     <p>Email: arjungiridas123456@gmail.com</p>
     <p><a href="https://github.com/arjungiridas">GitHub</a></p>
@@ -235,6 +259,24 @@ function openModal(title, desc) {
 function closeModal() {
     document.getElementById("modal").style.display = "none";
 }
+
+// SCROLL REVEAL
+const reveals = document.querySelectorAll(".reveal");
+
+function revealOnScroll() {
+    const windowHeight = window.innerHeight;
+
+    reveals.forEach(el => {
+        const top = el.getBoundingClientRect().top;
+
+        if (top < windowHeight - 100) {
+            el.classList.add("active");
+        }
+    });
+}
+
+window.addEventListener("scroll", revealOnScroll);
+revealOnScroll();
 
 </script>
 
