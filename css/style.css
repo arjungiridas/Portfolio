@@ -1,119 +1,176 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Arjun Giridas | DevOps Engineer</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
-
-<!-- DARK MODE LOAD FIX -->
-<script>
-if (localStorage.getItem("theme") === "dark") {
-    document.documentElement.classList.add("dark");
+:root {
+    --bg: #ffffff;
+    --text: #111;
+    --sub: #666;
+    --card: #f8fafc;
 }
-</script>
 
-</head>
+html.dark {
+    --bg: #000;
+    --text: #f1f5f9;
+    --sub: #94a3b8;
+    --card: #111827;
+}
 
-<body>
+/* GLOBAL */
+body {
+    margin:0;
+    font-family:'Inter',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    transition:0.5s;
+}
 
-<!-- THEME TOGGLE -->
-<div class="theme-toggle" onclick="toggleMode()">
-    <div class="icon sun">☀️</div>
-    <div class="icon moon">🌙</div>
-</div>
+/* HERO */
+.hero {
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+}
 
-<!-- HERO -->
-<section class="hero">
+/* TEXT */
+.hero-text {
+    max-width:600px;
+    line-height:1.6;
+}
 
-    <img src="images/profile-light.png" class="bg-image light-img">
-    <img src="images/profile-dark.png" class="bg-image dark-img">
+.highlight {
+    margin-top:15px;
+    font-weight:600;
+}
 
-    <div class="hero-layer" id="layer1"></div>
-    <div class="hero-layer" id="layer2"></div>
+/* BACKGROUND IMAGES */
+.bg-image {
+    position:absolute;
+    bottom:0;
+    height:90%;
+    pointer-events:none;
+    transition:0.6s;
+}
 
-    <h1>Arjun Giridas</h1>
+/* LIGHT */
+.light-img {
+    left:0;
+    opacity:0.15;
+    filter:grayscale(100%);
+}
 
-    <p class="hero-text">
-    System Administrator with hands-on experience in infrastructure, transitioning into DevOps with focus on automation, CI/CD, and cloud technologies.
-    </p>
+/* DARK */
+.dark-img {
+    right:0;
+    opacity:0;
+}
 
-    <p class="highlight">Open to DevOps / Cloud Opportunities</p>
+html.dark .light-img {
+    opacity:0;
+    transform:translateX(-40px);
+}
 
-    <a href="doc/Arjun Giridas Resume.pdf" class="btn">Download Resume</a>
+html.dark .dark-img {
+    opacity:0.18;
+    transform:translateX(-10px);
+    mix-blend-mode:screen;
+}
 
-</section>
+/* BUTTON */
+.btn {
+    margin-top:20px;
+    padding:10px 25px;
+    border-radius:30px;
+    background:var(--text);
+    color:var(--bg);
+    text-decoration:none;
+}
 
-<!-- ABOUT -->
-<section class="container">
-<h2>About Me</h2>
-<p>
-System Administrator with strong Linux, networking, and infrastructure experience. Currently building DevOps skills through real-world projects including CI/CD, Docker, and monitoring systems.
-</p>
-</section>
+/* THEME TOGGLE */
+.theme-toggle {
+    position:fixed;
+    bottom:30px;
+    right:30px;
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+}
 
-<!-- FEATURES -->
-<section class="container">
-<h2>What I Do</h2>
+.icon {
+    position:absolute;
+    transition:0.4s;
+}
 
-<div class="features">
-<div class="feature"><h3>⚙️ DevOps Automation</h3><p>CI/CD pipelines using GitHub Actions.</p></div>
-<div class="feature"><h3>🐳 Containerization</h3><p>Docker-based deployments.</p></div>
-<div class="feature"><h3>📊 Monitoring</h3><p>Prometheus & Grafana.</p></div>
-<div class="feature"><h3>☁️ Cloud</h3><p>Scalable infrastructure.</p></div>
-</div>
+.sun { opacity:1; }
+.moon { opacity:0; }
 
-</section>
+html.dark .sun { opacity:0; }
+html.dark .moon { opacity:1; }
 
-<!-- PROJECTS -->
-<section class="container">
-<h2>Projects</h2>
+/* CONTAINER */
+.container {
+    max-width:1100px;
+    margin:auto;
+    padding:80px 20px;
+}
 
-<div class="carousel-wrapper">
+/* FEATURES */
+.features {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
 
-<button class="nav-btn left" onclick="scrollProjects(-1)">‹</button>
+/* PROJECTS */
+.carousel {
+    display:flex;
+    gap:20px;
+    overflow-x:auto;
+}
 
-<div class="carousel" id="projectCarousel">
+.project-card {
+    min-width:280px;
+    background:var(--card);
+    border-radius:12px;
+    padding:15px;
+    transition:0.3s;
+}
 
-<div class="project-card">
-<img src="images/slack.png">
-<h3>CI/CD Pipeline</h3>
-<p>Automated deployments using GitHub Actions.</p>
-</div>
+.project-card:hover {
+    transform:translateY(-8px);
+}
 
-<div class="project-card">
-<img src="images/flask.png">
-<h3>Flask Deployment</h3>
-<p>Dockerized production app.</p>
-</div>
+.project-card img {
+    width:100%;
+    border-radius:10px;
+}
 
-<div class="project-card">
-<img src="images/monitoring.png">
-<h3>Monitoring</h3>
-<p>Prometheus & Grafana dashboards.</p>
-</div>
+/* NAV */
+.nav-btn {
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    background:var(--text);
+    color:var(--bg);
+    border:none;
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    cursor:pointer;
+}
 
-<div class="project-card">
-<img src="images/alerts.png">
-<h3>Uptime Tool</h3>
-<p>Python monitoring alerts.</p>
-</div>
+.left { left:-10px; }
+.right { right:-10px; }
 
-</div>
-
-<button class="nav-btn right" onclick="scrollProjects(1)">›</button>
-
-</div>
-
-</section>
-
-<footer class="footer">
-© 2026 Arjun Giridas
-</footer>
-
-<script src="js/script.js"></script>
-
-</body>
-</html>
+/* FOOTER */
+.footer {
+    text-align:center;
+    padding:40px;
+    color:var(--sub);
+}
