@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arjun Giridas | DevOps Engineer</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* THEME */
+:root {
+    --bg: #ffffff;
+    --text: #111;
+    --sub: #666;
+    --card: #f8fafc;
+    --accent: linear-gradient(135deg,#2563eb,#7c3aed);
+}
+
+.dark {
+    --bg: #0f1114;
+    --text: #f1f5f9;
+    --sub: #94a3b8;
+    --card: #111827;
+    .dark {
+    background: radial-gradient(circle at center, rgba(255,0,0,0.06), #000);
+}
+}
+
+/* GLOBAL */
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    transition: 0.4s;
+    overflow-x: hidden;
+}
+
+/* HERO PARALLAX */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.6s ease;
+
+        /* keep text centered */
+.hero h1, .hero p, .btn {
+    position: relative;
+    z-index: 2;
+}
+}
+.dark .hero {
+    background: #000;
+    
+}
+
+.hero h1 {
+    font-size: 64px;
+    background: var(--accent);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+/* BASE IMAGE */
+.bg-image {
+    position: absolute;
+    bottom: 0;
+    height: 90%;
+    pointer-events: none;
+    transition: all 0.6s ease;
+    z-index: 1;
+}
+
+/* LIGHT MODE IMAGE (LEFT SIDE) */
+.light-img {
+    left: 0;
+    opacity: 0.18;
+    filter: grayscale(100%) contrast(130%);
+    mix-blend-mode: multiply;
+    
+}
+
+/* DARK MODE IMAGE (RIGHT SIDE - initially hidden) */
+.dark-img {
+    opacity: 0;
+    right: 0;
+
+    /* 👇 THIS IS THE FIX */
+    mask-image: linear-gradient(to left, black 60%, transparent);
+    -webkit-mask-image: linear-gradient(to left, black 60%, transparent);
+    filter: blur(0.5px) brightness(110%) contrast(120%);
+}
+/* DARK MODE ACTIVE */
+.dark .light-img {
+    opacity: 0;
+    transform: translateX(-40px); /* move out */
+}
+
+.dark .dark-img {
+    right: 0;                /* 👈 slide into view */
+    opacity: 0.18;           /* subtle */
+    mix-blend-mode: screen;
+    transform: translateX(-10px);
+}
+.hero-layer {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: var(--accent);
+    filter: blur(120px);
+    opacity: 0.2;
+}
+.bg-image {
+    transition: all 0.8s cubic-bezier(.77,0,.18,1);
+}
+/* THEME TOGGLE BUTTON */
+.theme-toggle {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg,#2563eb,#7c3aed);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    overflow: hidden;
+    z-index: 999;
+}
+
+/* ICONS */
+.icon {
+    position: absolute;
+    font-size: 22px;
+    transition: all 0.5s ease;
+}
+
+/* SUN DEFAULT */
+.sun {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* MOON HIDDEN */
+.moon {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+/* DARK MODE SWITCH */
+.dark .sun {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+.dark .moon {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* GLOBAL TRANSITION */
+body {
+    transition: background 0.6s ease, color 0.6s ease;
+}
+
+/* DARK MODE CINEMATIC BG */
+.dark {
+    --bg: #000;
+ 
+}
+/* BUTTON */
+.btn {
+    margin-top: 25px;
+    padding: 12px 28px;
+    border-radius: 999px;
+    background: var(--text);
+    color: var(--bg);
+    text-decoration: none;
+}
+.carousel-wrapper {
+    position: relative;
+}
+
+.carousel {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    padding: 10px;
+}
+
+/* hide scrollbar */
+.carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.project-card {
+    min-width: 280px;
+    flex: 0 0 auto;
+    background: var(--card);
+    border-radius: 14px;
+    padding: 15px;
+    scroll-snap-align: center;
+    transition: 0.3s;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+}
+
+.project-card img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.project-card h3 {
+    margin: 10px 0 5px;
+}
+
+.project-card p {
+    font-size: 14px;
+    color: var(--sub);
+}
+
+/* NAV BUTTONS */
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--text);
+    color: var(--bg);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.left { left: -10px; }
+.right { right: -10px; }
+
+/* CONTAINER */
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 80px 20px;
+}
+
+/* GRID */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+/* CARD */
+.card {
+    border-radius: 16px;
+    background: var(--card);
+    padding: 20px;
+    transition: transform 0.2s ease;
+    transform-style: preserve-3d;
+}
+
+.card img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* FEATURE SECTION */
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+    gap: 20px;
+}
+
+.feature {
+    padding: 20px;
+}
+
+/* DARK BUTTON */
+.theme-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--accent);
+    color: white;
+    padding: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* FOOTER */
+.footer {
+    text-align: center;
+    padding: 50px;
+    color: var(--sub);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="theme-toggle" onclick="toggleMode()">
+    <div class="icon sun">☀️</div>
+    <div class="icon moon">🌙</div>
+</div>
+<div class="theme-glow"></div>
+<!-- HERO -->
+<section class="hero">
+
+    <!-- BACKGROUND IMAGES -->
+    <img src="images/profile-light.png" class="bg-image light-img">
+    <img src="images/profile-dark.png" class="bg-image dark-img">
+
+    <div class="hero-layer" id="layer1"></div>
+    <div class="hero-layer" id="layer2"></div>
+
+<h1>Arjun Giridas</h1>
+
+<p style="max-width:600px;margin:auto;line-height:1.6;">
+System Administrator with hands-on experience in managing IT infrastructure, servers, and networks, currently transitioning into a DevOps Engineer role. Passionate about automation, cloud technologies, and building scalable, reliable systems using modern DevOps practices.
+</p>
+
+<p style="margin-top:15px;"><strong>Open to DevOps / Cloud Opportunities</strong></p>
+
+<a href="doc/Arjun Giridas Resume.pdf" class="btn">Download Resume</a>
+
+</section>
+
+<!-- FEATURES (PRODUCT STYLE) -->
+
+<div class="container">
+<h2>About Me</h2>
+
+<p style="line-height:1.7;max-width:800px;">
+I am a System Administrator with a strong foundation in Linux, networking, and infrastructure management. Over the years, I have gained hands-on experience in maintaining production systems, troubleshooting issues, and ensuring high availability of services.
+</p>
+
+<p style="line-height:1.7;max-width:800px;">
+Currently, I am transitioning into DevOps, focusing on automation, CI/CD pipelines, containerization, and cloud technologies. I enjoy building real-world projects that bridge the gap between development and operations, improving deployment efficiency and system reliability.
+</p>
+
+<p style="line-height:1.7;max-width:800px;">
+My goal is to become a DevOps Engineer who can design scalable systems, automate workflows, and contribute to modern cloud-native environments.
+</p>
+</div>
+
+<div class="container">
+<h2>What I Do</h2>
+
+<div class="features">
+
+<div class="feature">
+<h3>⚙️ DevOps Automation</h3>
+<p>Design and implement CI/CD pipelines using GitHub Actions to automate build, test, and deployment workflows.</p>
+</div>
+
+<div class="feature">
+<h3>🐳 Containerization</h3>
+<p>Build and deploy applications using Docker, ensuring consistency across development and production environments.</p>
+</div>
+
+<div class="feature">
+<h3>📊 Monitoring & Observability</h3>
+<p>Set up monitoring solutions using Prometheus and Grafana to track system performance and availability.</p>
+</div>
+
+<div class="feature">
+<h3>☁️ Cloud & Infrastructure</h3>
+<p>Work with cloud platforms and Linux servers to manage scalable and reliable infrastructure.</p>
+</div>
+
+</div>
+</div>
+
+<!-- PROJECTS -->
+<div class="container">
+<h2>Projects</h2>
+
+<div class="carousel-wrapper">
+
+    <button class="nav-btn left" onclick="scrollProjects(-1)">‹</button>
+
+    <div class="carousel" id="projectCarousel">
+
+        <div class="project-card">
+            <img src="images/slack.png">
+            <h3>CI/CD Pipeline</h3>
+            <p>Automated deployments using GitHub Actions, Docker, and NGINX.</p>
+        </div>
+
+        <div class="project-card">
+            <img src="images/flask.png">
+            <h3>Flask Deployment</h3>
+            <p>Dockerized Flask app using Gunicorn and Nginx.</p>
+        </div>
+
+        <div class="project-card">
+            <img src="images/monitoring.png">
+            <h3>Monitoring Stack</h3>
+            <p>Prometheus & Grafana dashboards for real-time monitoring.</p>
+        </div>
+
+        <div class="project-card">
+            <img src="images/alerts.png">
+            <h3>Uptime Tool</h3>
+            <p>Python-based monitoring tool with alert alerts.</p>
+        </div>
+
+    </div>
+
+    <button class="nav-btn right" onclick="scrollProjects(1)">›</button>
+
+</div>
+</div>
+
+<div class="footer">© 2026 Arjun Giridas</div>
+
+<script>
+
+// DARK MODE
+function toggleMode() {
+    document.body.classList.toggle("dark");
+}
+
+// PARALLAX
+document.addEventListener("mousemove", e => {
+    document.getElementById("layer1").style.transform =
+        `translate(${e.clientX/20}px, ${e.clientY/20}px)`;
+
+    document.getElementById("layer2").style.transform =
+        `translate(${e.clientX/40}px, ${e.clientY/40}px)`;
+});
+
+// 3D TILT
+document.querySelectorAll(".tilt").forEach(card => {
+    card.addEventListener("mousemove", e => {
+        let x = e.offsetX;
+        let y = e.offsetY;
+        let rotateX = -(y - 100) / 10;
+        let rotateY = (x - 150) / 10;
+
+        card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+
+    card.addEventListener("mouseleave", () => {
+        card.style.transform = "rotateX(0) rotateY(0)";
+    });
+});
+
+</script>
+
+</body>
+</html>
